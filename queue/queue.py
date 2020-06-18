@@ -9,7 +9,7 @@ return elements in First In First Out order.
    Make sure the Queue tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Queue?
-   
+
    Head and tail are reversed.
    
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
@@ -19,7 +19,7 @@ Stretch: What if you could only use instances of your Stack class to implement t
 
 
 """
-QUEUE — ARRAY
+QUEUE — ARRAY/LIST
 """
 #class Queue:
 #    def __init__(self):
@@ -41,7 +41,6 @@ QUEUE — ARRAY
 #            self.storage.pop(-1)
 #            self.size -= 1
 #            return last_value
-
 
 """
 QUEUE — SINGLY LINKED LIST
@@ -65,6 +64,6 @@ class Queue:
             val = self.storage.head.value
             self.storage.remove_head()
             self.size -= 1
-            return(val)
+            return val
         except:
-            print('There are no values')
+            return None
