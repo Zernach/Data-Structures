@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../singly_linked_list')
+from singly_linked_list import LinkedList
+
 """
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order. 
@@ -11,10 +15,6 @@ return elements in Last In First Out order.
    implementing a Stack?
 """
 
-"""
-STACK — ARRAY/LIST
-"""
-#class Stack:
 #    def __init__(self):
 #        self.size = 0
 #        self.storage = []
@@ -34,11 +34,6 @@ STACK — ARRAY/LIST
 #            self.storage.remove(value)
 #            self.size -= 1
 #            return value
-
-"""
-STACK — USING SINGLY LINKED LIST
-"""
-from singly_linked_list import LinkedList
 
 class Stack:
     def __init__(self):
