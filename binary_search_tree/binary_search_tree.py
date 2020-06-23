@@ -60,6 +60,7 @@ class BSTNode:
         # the largest value will always be to the right of the current node
         # if we can go right, lets find the largest number there by calling get_max on the right subtree
         # if we cannot go right, return the current value
+        pass
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
