@@ -134,3 +134,6 @@ class DoublyLinkedList:
                 max_value = current_node.value
             current_node = current_node.next
         return max_value
+
+node = ListNode(10, None, None)
+print(node)
