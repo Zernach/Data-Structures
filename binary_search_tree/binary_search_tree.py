@@ -2,7 +2,6 @@
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
 at searching for a particular piece of data in the tree. 
-
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
    on the BSTNode class.
@@ -17,6 +16,18 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
+        # take the current value of our node (self.value)    
+        # compare to the new value we want to insert
+
+        # if new value < self.value
+            # IF self.left is already taken by a node
+                # make that (left) node, call insert 
+            # set the left to the new node with the new value
+
+        # if new value >= self.value
+            # IF self.right is already taken by a node
+                # make that (right) node call insert 
+            # set the right child to the new node with new value
         pass
 
     # Return True if the tree contains the value
@@ -46,10 +57,15 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # the largest value will always be to the right of the current node
+        # if we can go right, lets find the largest number there by calling get_max on the right subtree
+        # if we cannot go right, return the current value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
+        # call function on the current value fn(self.value)
+        # if you can go left, call for_each on the left tree
+        # if you can go right, call for_each on the right tree
         pass
 
     # Part 2 -----------------------
