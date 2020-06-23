@@ -34,48 +34,49 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        if self.value == target:
-            return True
-        # compare the target to current value
-        # if current value < target
-        found = False
-        if self.value < target:
-            # check the left subtree (self.left.contains(target))
-            # if you cannot go left, return False
-            if self.left is None:
-                return False
-            found = self.left.contains(target)
-
-        # if current value >= target
-        if self.value >= target:
-            # check if right subtree contains target
-            # if you cannot go right, return False
-            if self.right is None:
-                return False
-            found = self.right.contains(target)
-
-        return found
+            if self.value == target:
+                return True
+            if self.value > target:
+                if self.left is None:
+                    return False
+                found = self.left.contains(target)
+            else:
+                if self.right is None:
+                    return False
+                found = self.right.contains(target)
+            return found
 
     # Return the maximum value found in the tree
     def get_max(self):
         # the largest value will always be to the right of the current node
         # if we can go right, lets find the largest number there by calling get_max on the right subtree
         # if we cannot go right, return the current value
-        pass
+        if self.right == None:
+            return self.value
+        if self.right is not None:
+            return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         # call function on the current value fn(self.value)
         # if you can go left, call for_each on the left tree
         # if you can go right, call for_each on the right tree
-        pass
+        fn(self.value)
+        if self.left is not None:
+            self.left.for_each(fn)
+        if self.right is not None:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if self.left is not None:
+            self.left.in_order_print(self.left)
+        print(node.value)
+        if self.right is not None:
+            self.right.in_order_print(self.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
