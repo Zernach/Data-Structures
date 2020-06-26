@@ -8,6 +8,10 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+from queue import Queue
+from stack import Stack
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -73,45 +77,80 @@ class BSTNode:
     # Hint:  Use a recursive, depth first traversal
     #def in_order_print(self, node):
     #    if node is None:
-    #        pass
+    #        return
     #    self.in_order_print(node.left)
     #    print(node.value)
     #    self.in_order_print(node.right)
 
+    #def in_order_print(self, node):
+    #    if node.left:
+    #        node.in_order_print(node.left)
+    #    print(int(node.value))
+    #    if node.right:
+    #        node.in_order_print(node.right)
+
     def in_order_print(self, node):
-        if node.left:
-            node.in_order_print(node.left)
+        if node is None:
+            return
+        self.in_order_print(node.left)
         print(node.value)
-        if node.right:
-            node.in_order_print(node.right)
+        self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+    # Print top layer, then one layer lower, then one layer lower, etc.
+    # Use a QUEUE data structure
     def bft_print(self, node):
-        pass
+        queue = []
+        queue.append(node)
+        while len(queue) != 0:
+            removed_node = queue.pop(0)
+            print(removed_node.value)
+            if removed_node.left is not None:
+                queue.append(removed_node.left)
+            if removed_node.right is not None:
+                queue.append(removed_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+    # Use a STACK data structure
     def dft_print(self, node):
-        pass
+        stack = []
+        stack.append(node)
+        while len(stack) != 0:
+            removed_node = stack.pop(-1)
+            print(removed_node.value)
+            if removed_node.left is not None:
+                stack.append(removed_node.left)
+            if removed_node.right is not None:
+                stack.append(removed_node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        if node is None:
+            return
+        print(node.value)
+        self.pre_order_dft(node.left)
+        self.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        if node is None:
+            return
+        self.post_order_dft(node.left)
+        self.post_order_dft(node.right)
+        print(node.value)
 
-bst = BSTNode(1)
-bst.insert(8)
-bst.insert(5)
-bst.insert(7)
-bst.insert(6)
-bst.insert(3)
-bst.insert(4)
-bst.insert(2)
-bst.in_order_print(bst)
+# ORDER OF NODE INSERTS FROM TEST FILE
+#test = BSTNode(1)
+#test.insert(8)
+#test.insert(5)
+#test.insert(7)
+#test.insert(6)
+#test.insert(3)
+#test.insert(4)
+#test.insert(2)
+#test.bft_print(test)
